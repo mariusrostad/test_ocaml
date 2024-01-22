@@ -1,0 +1,13 @@
+(library
+ (name test_dream)
+ (libraries dream)
+ (preprocess (pps lwt_ppx)))
+
+(include_subdirs unqualified)
+
+(subdir
+  pages/
+ (rule
+   (target index.ml)
+   (action
+    (run %{bin:dream_eml} %{dep:index.eml} --workspace %{workspace_root}))))
